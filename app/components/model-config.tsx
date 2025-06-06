@@ -110,6 +110,28 @@ export function ModelConfigList(props: {
         ></input>
       </ListItem>
 
+      <ListItem
+        title={Locale.Settings.ThinkingBudget.Title}
+        subTitle={Locale.Settings.ThinkingBudget.SubTitle}
+      >
+        <input
+          aria-label={Locale.Settings.ThinkingBudget.Title}
+          type="number"
+          min={0}
+          max={32768}
+          value={props.modelConfig.thinking_budget ?? 0}
+          onChange={(e) =>
+            props.updateConfig(
+              (config) =>
+                (config.thinking_budget =
+                  ModalConfigValidator.thinking_budget(
+                    e.currentTarget.valueAsNumber,
+                  )),
+            )
+          }
+        ></input>
+      </ListItem>
+
       {props.modelConfig?.providerName == ServiceProvider.Google ? null : (
         <>
           <ListItem

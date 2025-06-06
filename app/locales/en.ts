@@ -551,6 +551,10 @@ const en: LocaleType = {
       Title: "Max Tokens",
       SubTitle: "Maximum length of input tokens and generated tokens",
     },
+    ThinkingBudget: {
+      Title: "Thinking Budget",
+      SubTitle: "Guide the model to spend more effort on reasoning",
+    },
     PresencePenalty: {
       Title: "Presence Penalty",
       SubTitle:

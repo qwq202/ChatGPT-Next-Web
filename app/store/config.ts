@@ -81,6 +81,7 @@ export const DEFAULT_CONFIG = {
     size: "1024x1024" as ModelSize,
     quality: "standard" as DalleQuality,
     style: "vivid" as DalleStyle,
+    thinking_budget: 0,
   },
 
   ttsConfig: {
@@ -159,6 +160,9 @@ export const ModalConfigValidator = {
   top_p(x: number) {
     return limitNumber(x, 0, 1, 1);
   },
+  thinking_budget(x: number) {
+    return limitNumber(x, 0, 32768, 0);
+  },
 };
 
 export const useAppConfig = createPersistStore(
@@ -195,7 +199,7 @@ export const useAppConfig = createPersistStore(
   }),
   {
     name: StoreKey.Config,
-    version: 4.1,
+    version: 4.2,
 
     merge(persistedState, currentState) {
       const state = persistedState as ChatConfig | undefined;
@@ -253,6 +257,10 @@ export const useAppConfig = createPersistStore(
           DEFAULT_CONFIG.modelConfig.compressModel;
         state.modelConfig.compressProviderName =
           DEFAULT_CONFIG.modelConfig.compressProviderName;
+      }
+
+      if (version < 4.2) {
+        state.modelConfig.thinking_budget = 0;
       }
 
       return state as any;

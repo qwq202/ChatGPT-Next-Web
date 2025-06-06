@@ -546,6 +546,10 @@ const cn = {
       Title: "单次回复限制 (max_tokens)",
       SubTitle: "单次交互所用的最大 Token 数",
     },
+    ThinkingBudget: {
+      Title: "思考预算 (thinking_budget)",
+      SubTitle: "指导模型投入更多思考步骤",
+    },
     PresencePenalty: {
       Title: "话题新鲜度 (presence_penalty)",
       SubTitle: "值越大，越有可能扩展到新话题",
