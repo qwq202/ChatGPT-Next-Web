@@ -198,9 +198,9 @@ export function isModelAvailableInServer(
   modelName: string,
   providerName: string,
 ) {
-  const fullName = `${modelName}@${providerName}`;
+  const fullName = `${modelName}@${providerName.toLowerCase()}`;
   const modelTable = collectModelTable(DEFAULT_MODELS, customModels);
-  return modelTable[fullName]?.available === false;
+  return modelTable[fullName]?.available === true;
 }
 
 /**
